@@ -1,97 +1,55 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Location Tracker App
 
-# Getting Started
+This is a React Native application designed for tracking and managing user-defined locations as well as monitoring the device's real-time location. It features persistent storage, configurable settings, and local push notifications for location inactivity.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+- **Persistent Location Storage**: Store and retrieve user-defined locations using `react-native-mmkv`.
+- **Device Location Tracking**:
+  - Utilizes `react-native-geolocation-service` for accurate device location.
+  - Configurable **location sampling rate** (in seconds) via settings.
+  - Toggleable **location tracking enabled/disabled** switch.
+  - Cross-platform implementation: `setInterval` with `getCurrentPosition` for iOS, and `watchPosition` equivalent behavior for Android based on `interval` setting.
+- **Settings Management**:
+  - Persistent application settings powered by `react-native-mmkv`.
+  - Configurable **Push Notifications** enable/disable.
+  - Configurable **Location Tracking** enable/disable.
+  - Configurable **Location Sampling Rate**.
+- **Interactive Location List**:
+  - Display a list of saved and tracked device locations.
+  - View location details (Latitude, Longitude, Name, Timestamp).
+  - Tap on a location to open it in a map application (Google Maps/Apple Maps).
+- **Location Management**:
+  - **Edit** existing locations (latitude, longitude).
+  - **Delete** locations with a confirmation dialog.
+- **Location Inactivity Alerts**:
+  - Local push notifications powered by `react-native-push-notification`.
+  - If both location tracking and push notifications are enabled, a notification is triggered when the device's location hasn't changed for **10 minutes**.
+  - Tapping the inactivity notification will automatically **disable location tracking**.
+- **Shared State Management**: Utilizes React Context API to ensure settings and location data are consistently accessed across the application.
+- **Modern UI**: Built with `react-native-paper` for a Material Design look and feel.
+- **Vector Icons**: Uses `react-native-vector-icons/MaterialIcons` for crisp, scalable icons.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Setup and Installation
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Prerequisites
 
-```sh
-# Using npm
-npm start
+- Node.js (LTS version recommended)
+- npm or Yarn
+- React Native CLI
+- Xcode (for iOS development)
+- Android Studio (for Android development)
 
-# OR using Yarn
-yarn start
-```
+### 1. Install Dependencies
 
-## Step 2: Build and run your app
+npm install
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### 2. Install Pods (iOS only)
 
-### Android
+cd ios && pod install && cd ..
 
-```sh
-# Using npm
-npm run android
+### 3. Run the app
 
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
 npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+or
+npm run android
