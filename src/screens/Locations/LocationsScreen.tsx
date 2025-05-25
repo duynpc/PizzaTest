@@ -42,11 +42,11 @@ const LocationsScreen = () => {
         },
         {
           text: 'Delete',
-          onPress: () => deleteLocation(locationId), // Only delete if confirmed
-          style: 'destructive', // Red button for destructive action
+          onPress: () => deleteLocation(locationId),
+          style: 'destructive',
         },
       ],
-      {cancelable: true}, // Allow dismissing by tapping outside
+      {cancelable: true},
     );
   };
 

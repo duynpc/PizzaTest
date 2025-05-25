@@ -15,9 +15,9 @@ const storage = new MMKV({
 
 // Default settings
 const defaultSettings: AppSettings = {
-  isPushNotificationsEnabled: false,
+  isPushNotificationsEnabled: true,
   locationSamplingRate: 8, // seconds
-  isLocationTrackingEnabled: false,
+  isLocationTrackingEnabled: true,
 };
 
 const SETTINGS_KEY = 'appSettings';
